@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Articulos extends CI_Controller {
 
     public function index() {
-        $data['filas'] = $this->db->query('select * from articulos ')->result_array();
+        $data['filas'] = $this->Articulo->todos();
         $this->load->view('articulos/index', $data);
     }
 
@@ -13,28 +13,20 @@ class Articulos extends CI_Controller {
         if ($this->input->post('borrar') !== NULL) {
             $id = $this->input->post('id');
             if ($id !== NULL) {
-                $res = $this->db->query('delete from articulos where id = ?', array($id));
+                $res = $this->Articulo->borrar($id);
             }
             redirect('articulos/index');
-        }
-        else 
-        {
-            if ($id === NULL)
-            {
+        } else {
+            if ($id === NULL) {
                 redirect('articulos/index');
-            } 
-            else 
-            {
-                $res = $this->db->query('select * from articulos where id =?', array($id));
-                if ($res->num_rows() === 0){
+            } else {
+                $res = $this->Articulo->por_id($id);
+                if ($res === FALSE) {
                     redirect('articulos/index');
-                }
-                else 
-                {
-                    $data= $res->row_array();
+                } else {
+                    $data = $res;
                     $this->load->view('articulos/borrar', $data);
                 }
-                
             }
         }
     }
