@@ -16,4 +16,8 @@ class Articulo extends CI_Model {
         $res =  $this->db->query('select * from articulos where id =?', array($id));
         return ($res->num_rows()) ? $res-> row_array() : FALSE;
     }
+    
+    public function insertar($valores){
+        return $this->db->insert('articulos', $valores);
+    }
 }

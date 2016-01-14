@@ -9,6 +9,18 @@ class Articulos extends CI_Controller {
         $this->load->view('articulos/index', $data);
     }
 
+    public function insertar() {
+        if ($this->input->post('insertar') !== NULL) {
+            $valores = $this->input->post();
+            unset($valores['insertar']);
+            $res = $this->Articulo->insertar($valores);
+            redirect('articulos/index');
+        } else {
+            $this->load->view('articulos/insertar');
+        }
+        
+    }
+
     public function borrar($id = NULL) {
         if ($this->input->post('borrar') !== NULL) {
             $id = $this->input->post('id');
