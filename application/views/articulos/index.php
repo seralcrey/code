@@ -5,19 +5,21 @@
         <title>Artículos</title>
     </head>
     <body>
-        <table>
-            <td>ID</td>
-            <td>Código</td>
-            <td>Nombre</td>
-            <td>Borrar</td>
+        <table style="border: 2px solid black;">
+            <th>ID</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th colspan="2">Acciones</th>
             <?php foreach ($filas as $fila) { ?>
                 <tr>
                     <td><?= $fila['id'] ?></td>
                     <td><?= $fila['codigo'] ?></td>
                     <td><?= $fila['nombre'] ?></td>
-                    <td><?= anchor('/articulos/borrar/'. $fila['id'], 'Borrar' )?></td>
+                    <td><?= anchor('/articulos/borrar/'. $fila['id'], form_button('borrar', "Borrar") )?></td>
+                    <td><?= anchor('/articulos/editar/'. $fila['id'], form_button('editar', "Editar") )?></td>
                 </tr>
             <?php } ?>
         </table>
+        <?= anchor('articulos/insertar', form_button('insertar', "Insertar")) ?>
     </body>
 </html>

@@ -20,4 +20,13 @@ class Articulo extends CI_Model {
     public function insertar($valores){
         return $this->db->insert('articulos', $valores);
     }
+    
+    public function editar($valores, $id){
+        return $this->db->where('id', $id)->update('articulos', $valores);
+    }
+    
+    public function por_codigo($codigo){
+        $res =  $this->db->query('select * from articulos where codigo =?', array($codigo));
+        return ($res->num_rows()) ? $res-> row_array() : FALSE;
+    }
 }
