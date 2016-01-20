@@ -1,5 +1,6 @@
 -- B.D TIENDA JUGUETES(JUGUETOON) --
 
+
 drop table if exists usuarios cascade;
 
 create table usuarios (
@@ -7,7 +8,8 @@ create table usuarios (
     numero      numeric(13)     not null constraint uq_usuarios_numero unique,
     nick        varchar(100)    not null,
     password    char(32),
-    admin       bool            not null default false
+    admin       bool            not null default false,
+    rol_id      varchar(50)     
 );
 
 drop table if exists articulos cascade;
@@ -59,9 +61,9 @@ values  (1000, 'Barco Pirata Playmobil', 40.00,10),
         (1003, 'PlaStation 4', 350.00,30);
 
 
-insert into usuarios(numero, nick, password, admin)
-values  (1, 'juan', md5('juan'), true),
-        (2, 'maria', md5('maria'), false);
+insert into usuarios(numero, nick, password, admin, rol_id)
+values  (1, 'juan', password_hash('juan', PASSWORD_DEFAULT), true, 'admin'),
+        (2, 'maria', password_hash('maria', PASSWORD_DEFAULT), false, 'cliente');
 
 drop view if exists v_articulos;
 

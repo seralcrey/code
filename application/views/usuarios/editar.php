@@ -5,7 +5,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <?= validation_errors() ?>
-                    <?= form_open('articulos/editar/' . $id) ?>
+                    <?= form_open('usuarios/editar/' . $id) ?>
                     <div class="form-group">
                         <?= form_label('Codigo:', 'codigo') ?>
                         <?= form_input('codigo', set_value('codigo', $codigo, FALSE), 'id="codigo" class="form-control"') ?>
@@ -24,7 +24,7 @@
                     </div>
 
                     <?= form_submit('editar', 'Editar', 'class="btn btn-success"') ?>
-                    <?= anchor('articulos/index', 'Cancelar', 'class="btn btn-danger" role="button"') ?>
+                    <?= anchor('usuarios/index', 'Cancelar', 'class="btn btn-danger" role="button"') ?>
                     <?= form_close() ?>
                 </div>
             </div>

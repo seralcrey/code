@@ -1,3 +1,4 @@
+<?php template_set('title', 'Listado de articulo') ?>
 <div class="container-fluid ">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">

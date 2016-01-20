@@ -10,7 +10,6 @@ class Articulo extends CI_Model {
 
     public function borrar($id) {
         return $this->db->query('delete from articulos where id = ?', array($id));
-        ;
     }
 
     public function por_id($id) {
